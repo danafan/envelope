@@ -13,8 +13,8 @@
 					<input class="input_ele flex-1" type="number" placeholder="输入验证码" v-model="msg_code">
 					<div class="get_code" @click="getCode">{{get_text}}</div>
 				</div>
-				<input class="input_ele mb-12 width-100" type="number" placeholder="请设置登录密码" v-model="password">
-				<input class="input_ele mb-12 width-100" type="number" placeholder="请确认登录密码" v-model="comfirmPassword">
+				<input class="input_ele mb-12 width-100" placeholder="请设置登录密码" v-model="password">
+				<input class="input_ele mb-12 width-100" placeholder="请确认登录密码" v-model="comfirmPassword">
 				<div class="bind_but" @click="bindPhone">立即绑定</div>
 			</div>
 		</div>
