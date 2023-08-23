@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+const login = resolve=>System.import('@/container/login')
+const signIn = resolve=>System.import('@/container/signIn')
 const index = resolve=>System.import('@/container/index')
 const wangList = resolve=>System.import('@/container/wangList')
 const redPackage = resolve=>System.import('@/container/redPackage')
@@ -12,6 +14,16 @@ Vue.use(Router);
 
 const router = new Router({
   routes: [
+  {
+    path: '/login',
+    name:"登录",
+    component: login
+  },
+  {
+    path: '/signIn',
+    name:"注册",
+    component: signIn
+  },
   {
     path: '/index',
     name:"首页",

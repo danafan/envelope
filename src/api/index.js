@@ -21,7 +21,6 @@ instance.interceptors.response.use(response => {
   Indicator.close();
   switch (response.data.code) {
     case 301:
-    sessionStorage.clear();
     router.replace("/login");
   }
   return response;

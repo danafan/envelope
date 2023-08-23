@@ -11,9 +11,17 @@
 		<div class="content">
 			<router-view></router-view>
 		</div>
-		<div class="tabs" v-clipboard:copy="message">
-			<div class="tab_item" :class="{'active_item':active_index == 'w'}" @click="check_tab('w')">账号</div>
-			<div class="tab_item" :class="{'active_item':active_index == 'h'}" @click="check_tab('h')">红包</div>
+		<div class="tabs flex jsa" v-clipboard:copy="message">
+			<div class="tab_item flex fc ac jc" @click="check_tab('w')">
+				<img class="tab_icon" src="../assets/account_active.png" v-if="active_index == 'w'">
+				<img class="tab_icon" src="../assets/account_icon.png" v-else>
+				<div>账号</div>
+			</div>
+			<div class="tab_item flex fc ac jc" @click="check_tab('h')">
+				<img class="tab_icon" src="../assets/red_package_active.png" v-if="active_index == 'h'">
+				<img class="tab_icon" src="../assets/red_package.png" v-else>
+				<div>红包</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -52,21 +60,17 @@
 			position: relative;
 		}
 		.tabs{
+			background: #FFFFFF;
 			width: 100%;
-			height: .96rem;
-			display: flex;
+			height: .98rem;
 			.tab_item{
-				background: #FFAD58;
-				width: 50%;
-				height: 100%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-size: .28rem;
-				color: #FFFFFF;
-			}
-			.active_item{
-				background: #FF793E;
+				font-size: .22rem;
+				color: #333333;
+				.tab_icon{
+					margin-bottom: .06rem;
+					width: .42rem;
+					height: .46rem;
+				}
 			}
 		}
 	}
@@ -86,13 +90,14 @@
 		},
 		created(){
 			//测试登录
-			// resource.login({idd:'1'}).then(res => {
-			// 	if(res.data.code == 0){
-			// 		this.$router.push("/wangList");
-			// 	}else{
-			// 		this.$toast(res.data.msg);
-			// 	}
-			// })
+			resource.logintest({idd:'1'}).then(res => {
+				if(res.data.code == 0){
+					this.$router.push("/wangList");
+				}else{
+					this.$toast(res.data.msg);
+				}
+			})
+			return;
 
 			//判断是否绑定银行卡
 			this.getWangList();

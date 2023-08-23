@@ -1,54 +1,33 @@
 <template>
-	<div>
-		<div class="bank_row">
-			<div class="label">支付宝账号</div>
-			<input class="input" type="text" placeholder="输入支付宝账号" :disabled="disabled" v-model="alipay_acount">
-		</div>
-		<div class="bank_row">
-			<div class="label">姓名</div>
-			<input class="input" type="text" placeholder="输入姓名" :disabled="disabled" v-model="alipay_name">
-		</div>
-		<div class="bind_but" @click="bind">确定</div>
+	<div class="info_container">
+		<InfoItem placeholder="支付宝账号" :isDisabled="disabled" :value_text="alipay_acount"/>
+		<InfoItem placeholder="姓名" :isDisabled="disabled" :value_text="alipay_name"/>
+		<div class="bind_button" @click="bind" v-if="!disabled">确定</div>
 	</div>
 </template>
 <style lang="less" scoped>
-.bank_row{
-	border-bottom: 1px solid #E8E8E8;
-	background: #fff;
-	width: 100%;
-	height: 55px;
-	display: flex;
-	align-items: center;
-	padding-left: 15px;
-	padding-right: 15px;
-	.label{
-		width: 100px;
-		font-size: 15px;
-		color: #333;
+	.info_container{
+		padding: .3rem .2rem;
 	}
-	.input{
-		flex:1;
-		height: 50px;
-		border: none;
-		outline: none;
-		font-size: 15px;
+	.bind_button{
+		border-radius: .46rem;
+		background: #9786FF;
+		position: absolute;
+		left: 50%;
+		bottom: .3rem;
+		transform: translate(-50%);
+		width: 6.22rem;
+		text-align: center;
+		height: .9rem;
+		line-height: .9rem;
+		font-size: .3rem;
+		color: #fff;
+		font-weight: 600;
 	}
-}
-.bind_but{
-	background: #FF793E;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	text-align: center;
-	height: .96rem;
-	line-height: .96rem;
-	font-size: .28rem;
-	color: #fff;
-}
 </style>
 <script>
 	import resource from '../api/resource.js'
+	import InfoItem from '../components/infoItem'
 	export default{
 		data(){
 			return{
@@ -98,6 +77,7 @@
 					})
 				}
 			}
-		}
+		},
+		components:{InfoItem}
 	}
 </script>

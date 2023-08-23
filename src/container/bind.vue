@@ -1,20 +1,19 @@
 <template>
-	<div>
-		<div class="title_box">
-			<img class="go_back" src="../assets/go_back.png" @click="$router.go(-1)"/>
-			绑定账号
-		</div>
-		<div class="bind_box">
-			<div class="bind_text" @click="showAccount = true">
-				<div>{{type_txt}}</div>
-				<div class="check_box">
-					<div class="check_txt">切换</div>
-					<img src="../assets/check.png">
+	<div class="bind_container">
+		<div class="info_item flex fc">
+			<div class="title_row flex ac">
+				<div class="tag"></div>
+				<div class="flex ac" @click="showAccount = true">
+					<div class="info_item_title">账号类别：</div>
+					<div class="info_item_title">{{type_txt}}</div>
+					<img class="check_icon" src="../assets/check_icon.png">
 				</div>
 			</div>
-			<input type="text" placeholder="输入账号" v-model="wangwang">
+			<div class="info_content flex-1 flex ac jc">
+				<input class="content_input" :placeholder="`输入${type_txt}账号`" v-model="wangwang">
+			</div>
 		</div>
-		<div class="bind_but" @click="bind">绑定</div>
+		<div class="bind_button" @click="bind">绑定</div>
 		<div class="modal_box" v-if="showAccount">
 			<div class="modal_content">
 				<div class="modal_item" v-for="item in typeList" @click="checkType(item)">{{item.type_name}}</div>
@@ -24,111 +23,94 @@
 	</div>
 </template>
 <style lang="less" scoped>
-.title_box{
-	background: #fff;
-	width: 100%;
-	height: .88rem;
-	font-size: .32rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: #38393A;
-	position: relative;
-	.go_back{
-		position: absolute;
-		left: .36rem;
-		width: .2rem;
-		height: .36rem;
-	}
-}
-.bind_box{
-	padding-right: .26rem;
-	padding-left: .26rem;
-	margin: .3rem auto;
-	background: #FFFFFF;
-	width: 6.9rem;
-	height: 2.4rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	.bind_text{
-		border-bottom: 1px solid #F6F6F6;
-		padding-bottom: .16rem;
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin-bottom: .2rem;
-		font-size: .28rem;
-		color: #333333;
-		.check_box{
-			display: flex;
-			align-items: center;
-			.check_txt{
-				color:#FF793E;
-			}
-			img{
-				width: .3rem;
-				height: .3rem;
-			}
-		}
-	}
-	input{
-		display: block;
-		box-sizing: border-box;;
-		width:6.4rem;
-		height:.8rem;
-		background:#F6F6F6;
-		border-radius:.4rem;
-		font-size: .26rem;
-		padding-left: .6rem;
-		border:none;
-		outline: none;
-	}
-}
-.bind_but{
-	background: #FF793E;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	text-align: center;
-	height: .96rem;
-	line-height: .96rem;
-	font-size: .28rem;
-	color: #fff;
-}
-.list{
-	position: relative;
-	width: 100%;
-}
-.modal_box{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,.6);
-	.modal_content{
-		background: #F2F2F2;
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		width: 100%;
-		.modal_item,.cancel{
-			background: #fff;
+	.bind_container{
+		padding: .3rem .2rem;
+		.info_item{
+			margin-bottom: .2rem;
 			width: 100%;
-			text-align: center;
-			height: 1rem;
-			line-height: 1rem;
-			font-size: 17px;
-			color:#000000;
+			height: 2.22rem;
+			background: #FFFFFF;
+			border-radius: .16rem;
+			.title_row{
+				border-bottom: 1px solid #F8F8F8;
+				height:.68rem;
+				.tag{
+					margin-right: .2rem;
+					width: .06rem;
+					height: .32rem;
+					background: #00C693 linear-gradient(203deg, #DCD5FF 0%, #B7ABFF 100%);
+					border-radius: .06rem;
+				}
+				.info_item_title{
+					color: #333333;
+					font-size: .3rem;
+					font-weight: 500;
+				}
+				.check_icon{
+					margin-left: .08rem;
+					width: .2rem;
+					height: .12rem;
+				}
+			}
+			.info_content{
+				padding-left: .2rem;
+				padding-right: .2rem;
+				.content_input{
+					outline: none;
+					width: 100%;
+					height: .84rem;
+					background: #F8F8F8;
+					border-radius: .42rem;
+					border: 1px solid #F1F1F1;
+					font-size: .28rem;
+					padding-left: .4rem;
+					padding-right: .4rem;
+				}
+			}
 		}
-		.cancel{
-			margin-top: .2rem;
+		.bind_button{
+			border-radius: .46rem;
+			background: #9786FF;
+			position: absolute;
+			left: 50%;
+			bottom: .3rem;
+			transform: translate(-50%);
+			width: 6.22rem;
+			text-align: center;
+			height: .9rem;
+			line-height: .9rem;
+			font-size: .3rem;
+			color: #fff;
+			font-weight: 600;
 		}
 	}
-}
+	.modal_box{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,.6);
+		.modal_content{
+			background: #F2F2F2;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			.modal_item,.cancel{
+				background: #fff;
+				width: 100%;
+				text-align: center;
+				height: 1rem;
+				line-height: 1rem;
+				font-size: 17px;
+				color:#000000;
+			}
+			.cancel{
+				margin-top: .2rem;
+			}
+		}
+	}
 </style>
 <script>
 	import resource from '../api/resource.js'
@@ -169,7 +151,7 @@
 			//点击绑定
 			bind(){
 				if(this.wangwang == ''){
-					this.$toast('请输入账号');
+					this.$toast(`请输入${this.type_txt}账号`);
 				}else{
 					MessageBox.confirm('确定绑定?').then(action => {
 						if(action == 'confirm'){

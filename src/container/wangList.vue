@@ -1,10 +1,9 @@
 <template>
 	<div class="scroll_box">
 		<div class="scroll_item" v-for="item in wangList">
-			<div class="ww">{{item.wangwang}}</div>
-			<div class="toast">{{item.type}}</div>
+			{{item.type}}：{{item.wangwang}}
 		</div>
-		<img class="user_info_img" src="http://upload.92nu.com/user_info.png" @click="$router.push('/wx_info')">
+		<img class="user_info_img" src="../assets/user_info.png" @click="$router.push('/wx_info')">
 		<div class="modal_container" v-if="!is_set_phone">
 			<div class="modal_content">
 				<div class="title mb-12">绑定手机号</div>
@@ -30,30 +29,23 @@
 		overflow-y: scroll;
 		padding: .2rem;
 		.scroll_item{
+			background: linear-gradient(176deg, #FEF7FF 0%, #FFFFFF 100%);
+			box-shadow: 0px 4px 8px 0px #F6F0FF;
 			margin-top: .2rem;
 			border-radius: .16rem;
 			background: #FFFFFF;
 			width: 100%;
-			height: .96rem;
-			font-size: .28rem;
+			height: 1.06rem;
+			font-size: .32rem;
 			color: #333;
+			font-weight: 500;
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
 			padding-left: .2rem;
 			padding-right: .2rem;
-			.ww{
-				width: 70%;
-				display: -webkit-box;
-				-webkit-box-orient: vertical;
-				-webkit-line-clamp: 1;
-				overflow: hidden;
-			}
-			.toast{
-				text-align: end;
-				width: 30%;
-				color:#999999;
-			}
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow:ellipsis;
 		}
 		.user_info_img{
 			position: fixed;

@@ -1,6 +1,6 @@
 import http from './request.js'
 let path = {	
-	login:'wx/logintest',
+	logintest:'wx/logintest',
 	bannerList:'wx/bannerlist',				//轮播图列表
 	wangList:'wx/wwlist',					//获取旺旺号列表
 	setww:'wx/setww',						//绑定旺旺号
@@ -12,6 +12,11 @@ let path = {
 	getData:'wx/getdata',					//获取信息
 	sendSmsCode:'user/sendsmscode',			//发送手机验证码
 	bindPhone:'user/bindphone',				//验证绑定手机号密码
+	login:'user/login',						//登录
+	signInSendCode:'user/userregistersendsmscode',	//注册获取验证码
+	signIn:'user/userregister',				//注册
+	updateSendCode:'user/userchangepasswordsendsmscode',	//修改密码获取验证码
+	updatePassword:'user/userchangepassword',	//修改密码
 	
 }
 export default{
@@ -19,9 +24,9 @@ export default{
 	wangList(params){
 		return http.get(path.wangList, params)
 	},
-	//登录
-	login(params){
-		return http.get(path.login, params)
+	//测试登录
+	logintest(params){
+		return http.get(path.logintest, params)
 	},
 	//获取banner列表
 	bannerList(params){
@@ -62,5 +67,25 @@ export default{
 	//验证绑定手机号密码
 	bindPhone(params){
 		return http.post(path.bindPhone, params)
+	},
+	//登录
+	login(params){
+		return http.post(path.login, params)
+	},
+	//注册获取验证码
+	signInSendCode(params){
+		return http.post(path.signInSendCode, params)
+	},
+	//注册
+	signIn(params){
+		return http.post(path.signIn, params)
+	},
+	//修改密码获取验证码
+	updateSendCode(params){
+		return http.post(path.updateSendCode, params)
+	},
+	//修改密码
+	updatePassword(params){
+		return http.post(path.updatePassword, params)
 	},
 }
