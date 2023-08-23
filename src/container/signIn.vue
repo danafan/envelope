@@ -159,6 +159,7 @@
 				width: 1.36rem;
 				color: #000000;
 				font-size: .32rem;
+				white-space: nowrap;
 			}
 			.input_ele{
 				background: #F8F6FF;
@@ -168,7 +169,7 @@
 				font-size: .32rem;
 			}
 			.get_text{
-				width: 2.06rem;
+				width: 2.16rem;
 				text-align: center;
 				height: .68rem;
 				line-height: .68rem;
