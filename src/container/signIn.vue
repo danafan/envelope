@@ -168,7 +168,7 @@
 				font-size: .32rem;
 			}
 			.get_text{
-				width: 1.86rem;
+				width: 2.06rem;
 				text-align: center;
 				height: .68rem;
 				line-height: .68rem;
@@ -176,6 +176,7 @@
 				border: 1px solid #9786FF;
 				color: #9786FF;
 				font-size: .28rem;
+				white-space: nowrap;
 			}
 		}
 		.button{

@@ -99,6 +99,7 @@
 				font-size: .32rem;
 			}
 			.wjmm{
+				white-space: nowrap;
 				color: #999999;
 				font-size: .28rem;
 				color: #999999;
