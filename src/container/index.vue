@@ -90,14 +90,14 @@
 		},
 		created(){
 			//测试登录
-			resource.logintest({idd:'1'}).then(res => {
-				if(res.data.code == 0){
-					this.$router.push("/wangList");
-				}else{
-					this.$toast(res.data.msg);
-				}
-			})
-			return;
+			// resource.logintest({idd:'1'}).then(res => {
+			// 	if(res.data.code == 0){
+			// 		this.$router.push("/wangList");
+			// 	}else{
+			// 		this.$toast(res.data.msg);
+			// 	}
+			// })
+			// return;
 
 			//判断是否绑定银行卡
 			this.getWangList();
