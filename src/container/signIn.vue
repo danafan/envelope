@@ -107,7 +107,7 @@
         			}
         			if(this.type == '2'){	//注册
         				resource.signIn(arg).then(res => {
-        					if(res.data.code == 1){
+        					if(res.data.code == 0){
         						this.$toast(res.data.msg);
         						this.$router.go(-1);
         					}else{
@@ -116,7 +116,7 @@
         				})
         			}else{					//修改密码
         				resource.updatePassword(arg).then(res => {
-        					if(res.data.code == 1){
+        					if(res.data.code == 0){
         						this.$toast(res.data.msg);
         						this.$router.go(-1);
         					}else{

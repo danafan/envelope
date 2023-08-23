@@ -26,6 +26,14 @@
 				password:"",		//密码
 			}
 		},
+		created(){
+			if(localStorage.getItem('phone')){
+				this.phone = localStorage.getItem('phone');
+			}
+			if(localStorage.getItem('password')){
+				this.password = localStorage.getItem('password');
+			}
+		},
 		methods:{
 			//点击登录
 			login(){
@@ -39,9 +47,11 @@
 						password:this.password
 					}
 					resource.login(arg).then(res => {
-						if(res.data.code == 1){
+						if(res.data.code == 0){
+							localStorage.setItem('phone',this.phone);
+							localStorage.setItem('password',this.password);
 							this.$toast(res.data.msg);
-							this.$router.push('/index')
+							this.$router.replace('/index')
 						}else{
 							this.$toast(res.data.msg);
 						}
@@ -90,7 +100,7 @@
 			}
 			.wjmm{
 				color: #999999;
-				font-size: .32rem;
+				font-size: .28rem;
 				color: #999999;
 			}
 		}

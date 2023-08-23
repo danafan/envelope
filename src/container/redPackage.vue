@@ -1,5 +1,6 @@
 <template>
-	<div class="scroll_box">
+	<div class="scroll_box" :class="[{'flex ac jc':hbList.length == 0}]">
+		<div class="empty" v-if="hbList.length == 0">暂无数据</div>
 		<div class="scroll_item" v-for="item in hbList" @click="pay(item.id)" 
 		v-clipboard:copy="message">
 		<div>订单号：{{item.order_sn}}</div>
@@ -16,6 +17,10 @@
 	height: 100%;
 	overflow-y: scroll;
 	padding: .2rem;
+	.empty{
+		font-size: .32rem;
+		color: #999999;
+	}
 	.scroll_item{
 		margin-top: .2rem;
 		border-radius: .16rem;
