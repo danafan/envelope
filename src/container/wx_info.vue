@@ -1,7 +1,7 @@
 <template>
 	<div class="info_container">
-		<InfoItem placeholder="支付宝账号" :isDisabled="disabled" :value_text="alipay_acount"/>
-		<InfoItem placeholder="姓名" :isDisabled="disabled" :value_text="alipay_name"/>
+		<InfoItem placeholder="支付宝账号" :isDisabled="disabled" @changeInput="changeAcount" :value_text="alipay_acount"/>
+		<InfoItem placeholder="姓名" :isDisabled="disabled" @changeInput="changeName" :value_text="alipay_name"/>
 		<div class="bind_button" @click="bind" v-if="!disabled">确定</div>
 	</div>
 </template>
@@ -56,8 +56,17 @@
 					}
 				})
 			},
+			//输入支付宝账号
+			changeAcount(v){
+				this.alipay_acount = v;
+			},
+			//输入姓名
+			changeName(v){
+				this.alipay_name = v;
+			},
 			//设置信息
 			bind(){
+				console.log(this.alipay_acount)
 				if(this.alipay_acount == ''){
 					this.$toast('请输入支付宝账号');
 				}else if(this.alipay_name == ''){
