@@ -125,6 +125,7 @@
 </style>
 <script>
 	import resource from '../api/resource.js'
+	import { MessageBox } from 'mint-ui';
 	export default{
 		data(){
 			return{
@@ -151,6 +152,13 @@
 					if(res.data.code == 0){
 						this.wangList = res.data.data;
 						this.is_set_phone = res.data.is_set_phone;
+						if(res.data.tip){
+							MessageBox({
+								title: '提示',
+								message: res.data.tip,
+								confirmButtonText: '我知道了'
+							});
+						}
 					}else{
 						this.$toast(res.data.msg);
 					}
